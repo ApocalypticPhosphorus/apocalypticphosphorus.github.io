@@ -1,10 +1,12 @@
 body {
     font-family: Arial, sans-serif;
+    font-weight: bold;
     margin: 0;
     padding: 0;
     background-color: #414141;
     color: #fff;
     width: 100%;
+
 }
     
   
@@ -12,37 +14,36 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #af0404;
-    color: #252525;
+    color: #ef0000;
     padding: 20px;
     text-align: center;
-    position: sticky;
     top: 0;
-    z-index: 100;
+    position: fixed;
+    z-index: 1;
+    width: 98%;
+    transition: opacity 0.3s ease-in-out; /* Add a transition for opacity */
+    background: linear-gradient(180deg, rgba(65,65,65,1) 3%, rgba(65,65,65,0) 100%);
 }
+
+header.initial {
+    opacity: 1;
+  }
   
+  /* When scrolling down, gradually reduce the opacity to 0 (invisible) */
+header.scrolled {
+    opacity: 0;
+}
+
 h1 {
     text-align: center;
     margin: 0;
 }
-  
-main {
-    padding-top: 10px;
-    padding: 20px;
-}
-  
+
 .main {
     padding-left: 10px;
     padding-right: 10px;
 }
-  
-h2{
-    margin: 0;
-    padding: 10px;
-    padding-top: 0px;
-    padding-left: 0px;
-}
-  
+
 .navigation ul {
     list-style: none;
     margin: 0;
@@ -69,10 +70,64 @@ h2{
     height: 1px;
     background-color: #fff;
     right:0;
-    transition: width 0.2s ease-in-out;
+    transition: width 0.25s ease-in-out;
 }
   
 .slide-bar:hover::before {
     left: 0;
     width: 100%;
+}
+
+/* Set a maximum width and height for the container */
+.image-container {
+    max-width: 100%; /* Adjust as needed */
+    max-height: 100vh; /* Adjust as needed; 80vh limits the height to 80% of the viewport height */
+    overflow: hidden; /* Trim the overflow */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+}
+
+/* Ensure the image doesn't exceed the container dimensions */
+.image-container img {
+    max-width: 100%; /* Fit the image within the container's width */
+    height: auto; /* Maintain the aspect ratio of the image */
+    object-fit: cover; /* Crop the image to cover the container */
+    object-position: center; /* Center the image vertically */
+    filter: brightness(0.8);
+}
+
+.image-text {
+    position: absolute;
+    /*top: 50%; /* Center vertically */
+    /*left: 50%; /* Center horizontally */
+    /*transform: translate(-50%, -600%); /* Center both vertically and horizontally */
+    padding: 10px;
+    text-align: center;
+    width: 80%; /* Adjust as needed */
+    /*opacity: 0; /* Initially set opacity to 0 */
+    transition: opacity 0.5s ease; /* Add transitions for top and opacity */
+    
+}
+
+  /* Style the text content */
+.image-text p {
+    margin: 0;
+    font-size: 76px;
+    
+    color: #ffffff; /* Text color */
+}
+
+.next{
+    position: absolute;
+    left: 90%;
+    color: #fff;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 40px;
+    transition: 0.3s;
+}
+
+.next:hover{
+    left: 92%
 }
