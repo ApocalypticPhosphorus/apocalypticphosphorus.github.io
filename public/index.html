@@ -65,7 +65,7 @@
   <script>
     async function fetchStatus() {
       try {
-        const res = await fetch('/status');
+        const res = await fetch('https://helicopter-tracker-backend.onrender.com/status');
         const data = await res.json();
 
         const table = document.getElementById('helicopter-table');
@@ -101,7 +101,7 @@
     }
 
     fetchStatus();
-    setInterval(fetchStatus, 60000);
+    setInterval(fetchStatus, 120000);
   </script>
 </body>
 </html>
