@@ -3,52 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Helicopter Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      text-align: center;
-      padding: 2em;
-    }
-
-    h1 {
-      margin-bottom: 0;
-    }
-
-    #last-updated {
-      font-size: 0.9em;
-      color: #666;
-      margin-bottom: 1.5em;
-    }
-
-    table {
-      margin: 0 auto;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 0.75em 1.5em;
-    }
-
-    td.status.flying {
-      color: green;
-      font-weight: bold;
-    }
-
-    td.status.on-ground {
-      color: orange;
-      font-weight: bold;
-    }
-
-    td.status.unknown {
-      color: red;
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Helicopter Tracker</h1>
+  <h1>Helicopter Tracker <span id="last-updated"></span></h1>
+  <p id="loading-message" style="color: gray; font-style: italic;">Loading data from server…</p>
   <div id="last-updated">Last updated: never</div>
   <table>
     <thead>
@@ -62,46 +21,8 @@
     </tbody>
   </table>
 
-  <script>
-    async function fetchStatus() {
-      try {
-        const res = await fetch('https://helicopter-tracker-backend.onrender.com/status');
-        const data = await res.json();
 
-        const table = document.getElementById('helicopter-table');
-        table.innerHTML = '';
-
-        data.forEach(entry => {
-          const row = document.createElement('tr');
-
-          const stationCell = document.createElement('td');
-          stationCell.textContent = entry.station;
-          row.appendChild(stationCell);
-
-          const tailCell = document.createElement('td');
-          tailCell.textContent = entry.tail;
-          row.appendChild(tailCell);
-
-          const statusCell = document.createElement('td');
-          statusCell.textContent = entry.status;
-
-          // Assign color class based on status
-          statusCell.className = 'status ' + entry.status.toLowerCase().replace(' ', '-');
-          row.appendChild(statusCell);
-
-          table.appendChild(row);
-        });
-
-        const now = new Date();
-        document.getElementById('last-updated').textContent =
-          'Last updated: ' + now.toLocaleTimeString();
-      } catch (err) {
-        console.error('Failed to fetch status:', err);
-      }
-    }
-
-    fetchStatus();
-    setInterval(fetchStatus, 120000);
-  </script>
+  <script src="fetchStatus.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

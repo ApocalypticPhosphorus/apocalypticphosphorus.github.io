@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 2em;
+  }
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  #last-updated {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 1.5em;
+  }
+
+  table {
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 0.75em 1.5em;
+  }
+
+  td.status.flying {
+    color: green;
+    font-weight: bold;
+  }
+
+  td.status.on-ground {
+    color: orange;
+    font-weight: bold;
+  }
+
+  td.status.unknown {
+    color: red;
+    font-weight: bold;
+  }
