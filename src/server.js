@@ -4,10 +4,6 @@ const { getStatusData } = require('./fetchStatus');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
 
 // Serve static files from "public"
 app.use(express.static(path.join(__dirname, '../public')));
@@ -17,6 +13,7 @@ app.get('/status', (req, res) => {
   res.json(getStatusData());
 });
 
+// Start server (only once)
 app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
